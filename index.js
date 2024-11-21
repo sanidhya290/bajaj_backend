@@ -52,9 +52,9 @@ const checkPrime = (number) => {
 
 app.post("/bfhl", upload.single("file"), async (req, res) => {
   try {
-    const { arr, file_b64 } = req.body;
+    const { data, file_b64 } = req.body;
 
-    if (!arr || arr.length === 0) {
+    if (!data || data.length === 0) {
       return res.status(400).json({
         is_success: false,
         message: "No array found",
@@ -62,7 +62,7 @@ app.post("/bfhl", upload.single("file"), async (req, res) => {
     }
 
     const { numbers, alphabets, highest_lowercase_alphabet, isPrime } =
-      filterData(arr);
+      filterData(data);
 
     let fileValid = false;
     let fileMimeType = null;
